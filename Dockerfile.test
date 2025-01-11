@@ -1,0 +1,13 @@
+# The build stage
+FROM golang:1.22-bookworm as builder
+WORKDIR /app
+COPY . .
+RUN go build -o ssh-tunnel-setup /app/main.go
+
+FROM ubuntu:22.04
+RUN apt-get update
+RUN apt-get install openssh-client vim -y
+
+# The run stage
+COPY --from=builder /app/ssh-tunnel-setup /usr/local/bin/ssh-tunnel-setup
+CMD ["/bin/bash"]

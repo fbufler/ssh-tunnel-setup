@@ -1,0 +1,23 @@
+client:
+    name: default-client
+    key-directory: /home/john/.ssh
+    key-name: default-key
+    key-user: john.doe@example.com
+    server-name: example.com
+    server-port: 22
+    server-user: serveruser"
+    server-key-name: example.com.pk
+    user: default-user
+rotate: # will be automatically generated after running the client setup
+    key-directory: /home/john/.ssh
+    key-name: default-key
+    key-user: john.doe@example.com
+    server-name: example.com
+    server-port: 22
+    server-user: serveruser
+server:
+    name: tunnel-server
+    sshd-config-backup-path: /etc/ssh/sshd_config.bak
+    sshd-config-path: /etc/ssh/sshd_config
+    tunnel-user: serveruser
+trusted-host-key: ""
